@@ -7,9 +7,8 @@ import java.util.*;
 
 public class AnalyticsCounter {
 
-
-	private ISymptomReader symptomReader;
-	private ISymptomWriter symptomWriter;
+	private final ISymptomReader symptomReader;
+	private final ISymptomWriter symptomWriter;
 
 	public AnalyticsCounter(ISymptomReader reader, ISymptomWriter writer) {
 		symptomReader = reader;
@@ -22,13 +21,12 @@ public class AnalyticsCounter {
 
 	public Map<String, Integer> countSymptoms(List<String> symptoms) {
         Map<String,Integer> newSymptomsMap = new HashMap<>();
-		for(int i =0; i <symptoms.size();i++)
-		{
-			newSymptomsMap.putIfAbsent(symptoms.get(i),0);
-			int toAdd = newSymptomsMap.get(symptoms.get(i))+1;
-			newSymptomsMap.replace(symptoms.get(i),toAdd);
 
-		}
+        for (String symptom : symptoms) {
+            newSymptomsMap.putIfAbsent(symptom, 0);
+            int toAdd = newSymptomsMap.get(symptom) + 1;
+            newSymptomsMap.replace(symptom, toAdd);
+        }
 		return newSymptomsMap;
 	}
 

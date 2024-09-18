@@ -7,30 +7,27 @@ import java.util.*;
 
 public class WriteSymptomDataToFile implements ISymptomWriter{
 
-    private Map<String,Integer> symptomsToWrite= new HashMap<>();
+    public WriteSymptomDataToFile () {
 
-
-    public WriteSymptomDataToFile (Map<String,Integer> symptomsToWrite) {
-        this.symptomsToWrite = symptomsToWrite;
     }
 
     @Override
     public void writeSymptoms(Map<String, Integer> symptoms)
     {
         StringBuilder builder = new StringBuilder();
-        builder.append("All symptoms and occurences\n");
+        builder.append("All symptoms and occurrences\n");
         for (Map.Entry<String, Integer> entry : symptoms.entrySet()) {
             builder.append(entry.getKey()).append(" : ").append(entry.getValue()).append("\n");
         }
 
         try{
-            BufferedWriter writer = new BufferedWriter(new FileWriter("result.out.txt"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("result.out"));
             writer.write(builder.toString());
             writer.close();
         }
         catch (IOException e)
         {
-            System.out.println("Impossible d'écrire dans le fichier");
+            System.out.println("Impossible to write in the file");
         }
 
     }
