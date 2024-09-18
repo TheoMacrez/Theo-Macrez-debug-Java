@@ -15,9 +15,21 @@ public class AnalyticsCounter {
 		symptomWriter = writer;
 	}
 
+	/**
+	 *
+	 * Use interface ISymptomReader method to get symptoms
+	 * @return List<String>
+	 */
 	public List<String> getSymptoms() {
 		return symptomReader.GetSymptoms();
 	}
+
+	/**
+	 *
+	 * Go through the symptoms list : add it to the map, and/or increase counter
+	 * @param symptoms List of symptoms
+	 * @return Map<String, Integer>
+	 */
 
 	public Map<String, Integer> countSymptoms(List<String> symptoms) {
         Map<String,Integer> newSymptomsMap = new HashMap<>();
@@ -30,10 +42,22 @@ public class AnalyticsCounter {
 		return newSymptomsMap;
 	}
 
+	/**
+	 *
+	 * Just sort the symptoms list thanks to TreeMap
+	 * @param symptoms MapList of symptoms
+	 * @return Map<String, Integer>
+	 */
+
 	public Map<String, Integer> sortSymptoms(Map<String, Integer> symptoms) {
 		return new TreeMap<>(symptoms);
 	}
 
+	/**
+	 *
+	 * Use interface ISymptomWriter method to write symptoms count file
+	 * @param symptoms MapList of symptoms
+	 */
 	public void writeSymptoms(Map<String, Integer> symptoms) {
 		symptomWriter.writeSymptoms(symptoms);
 	}

@@ -11,6 +11,10 @@ public class WriteSymptomDataToFile implements ISymptomWriter{
 
     }
 
+    /**
+     * Création et écriture du fichier txt des symptomes
+     *
+     */
     @Override
     public void writeSymptoms(Map<String, Integer> symptoms)
     {
